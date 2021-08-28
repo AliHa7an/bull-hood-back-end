@@ -26,7 +26,7 @@ export class Broker {
   brokers: string;
 
   @Prop()
-  exchanges: string;
+  exchanges: Array<string>;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
   userId: User;

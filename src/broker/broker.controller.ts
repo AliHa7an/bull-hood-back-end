@@ -14,7 +14,7 @@ import { Broker } from 'src/schemas/brokers.schema';
 import { BrokerService } from './broker.service';
 
 @UseFilters(new AllExceptionsFilter())
-@Controller('broker')
+@Controller('brokers')
 export class BrokerController {
   constructor(private readonly brokerService: BrokerService) {}
 
