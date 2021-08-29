@@ -21,14 +21,12 @@ export class AuthController {
 
   @Post('login')
   async login(@Body() body: LoginDto) {
-    const user = await this.authService.validateUser(
-      body.username,
-      body.password,
-    );
-    return this.authService.login(user);
+    const user = await this.authService.validateUser(body.email, body.password);
+    const token = await this.authService.login(user);
+    return { user, token };
   }
 
-  @Post('register')
+  @Post('signup')
   async register(@Body() body: SignupDto) {
     if (await this.userService.getUserByUserName(body.username)) {
       throw new BadRequestException('Username already exists');
@@ -40,6 +38,8 @@ export class AuthController {
 
     const user = await this.userService.signUp(body);
 
-    return this.authService.login(user);
+    const token = await this.authService.login(user);
+
+    return { user, token };
   }
 }

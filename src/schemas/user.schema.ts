@@ -20,16 +20,19 @@ export class User {
   password: string;
 
   @Prop()
-  mobile: string;
+  mobile?: string;
 
   @Prop()
-  country: string;
+  country?: string;
 
   @Prop()
-  city: string;
+  state?: string;
 
   @Prop()
-  gender: string;
+  city?: string;
+
+  @Prop()
+  gender?: string;
 
   @Prop({ type: String, required: true, unique: true, lowercase: true })
   username: string;
